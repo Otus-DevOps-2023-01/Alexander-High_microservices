@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 build_info.txt
 
 ## python specific
 *.pyc
 .env
+=======
+*log
+>>>>>>> b6b918e (Add capistrano)
