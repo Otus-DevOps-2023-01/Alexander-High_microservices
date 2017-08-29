@@ -67,7 +67,7 @@ alexhigh-prometheus   latest    047145a96c35   5 years ago      112MB
 https://hub.docker.com/repository/docker/alexhigh/alexhigh-microservice/tags?page=1&ordering=last_updated
 =======
 # Monolith application
----
+
 ## Deploy using Capistrano
 
 #### Requirements for the target host:
@@ -78,7 +78,8 @@ https://hub.docker.com/repository/docker/alexhigh/alexhigh-microservice/tags?pag
 #### Steps:
 1. Install required gems:
 `bundle install`
-2. ```bash
+2. Set env vars:
+```bash
 export SERVER_IP=<ip_address>  # public IP address of the target host
 export REPO_NAME=<account/name> # repo name to fetch the code from, e.g. Artemmkin/reddit
 ```
@@ -86,5 +87,8 @@ export REPO_NAME=<account/name> # repo name to fetch the code from, e.g. Artemmk
 ```bash
 bundle exec cap production deploy:initial
 ```
+<<<<<<< HEAD
 ---
 >>>>>>> 0dd37b7 (Add info about capistrano deployment)
+=======
+>>>>>>> 1f7ad40 (Update README.md)
