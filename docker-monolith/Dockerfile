@@ -1,9 +1,8 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 RUN apt-get update
-RUN install git -y
 RUN sleep 30
-RUN apt-get install -y mongodb-server ruby-full ruby-dev build-essential
+RUN apt-get install -y mongodb-server ruby-full ruby-dev build-essential git
 RUN gem install bundler
 RUN git clone -b monolith https://github.com/express42/reddit.git
 
