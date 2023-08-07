@@ -1,7 +1,8 @@
 FROM ruby:2.4
-RUN apt update && apt install -y build-essential --no-install-recommends
+RUN apt update -q && apt install -y build-essential
 
 ENV APP_HOME /app
+
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
