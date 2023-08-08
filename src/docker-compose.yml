@@ -1,3 +1,6 @@
+---
+#  multi-net parametrical config
+
 version: '3.3'
 services:
   post_db:
