@@ -26,6 +26,7 @@ Alexander-High microservices repository
 Внесены изменения для множества сетей
 Параметризирован порт, версии, сетевые настройки
 Записано в .env + env.example
+
 Используя настройку в разделе 
 services:
   post_db:
