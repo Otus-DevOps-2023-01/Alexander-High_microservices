@@ -39,7 +39,6 @@ services:
     networks:
       - ${NET_FRONT}
       - ${NET_BACK}
-      - ${NET_BRIDGE}
   node-exporter:
     image: prom/node-exporter:v0.15.2
     user: root
@@ -54,11 +53,9 @@ services:
     networks:
       - ${NET_FRONT}
       - ${NET_BACK}
-      - ${NET_BRIDGE}
 volumes:
   prometheus_data:
   post_db:
 networks:
   net_front:
   net_back:
-  net_bridge:
