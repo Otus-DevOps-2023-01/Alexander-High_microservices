@@ -1,6 +1,6 @@
-FROM ruby:2.2
-RUN apt-get update -qq
-RUN apt install -y build-essential
+FROM ruby:2.4
+RUN apt-get update
+RUN apt-get install -y build-essential
 
 ENV APP_HOME /app
 
