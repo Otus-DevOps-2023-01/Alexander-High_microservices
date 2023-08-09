@@ -11,9 +11,9 @@ RUN rm -rf /var/lib/apt/lists/*
 
 
 WORKDIR $APP_HOME
-ADD Gemfile* $APP_HOME/
+COPY Gemfile* /app/
 RUN bundle install
-ADD . $APP_HOME
+COPY . /app/
 
 ENV POST_SERVICE_HOST post
 ENV POST_SERVICE_PORT 5000
