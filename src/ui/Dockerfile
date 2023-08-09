@@ -1,7 +1,7 @@
 FROM ubuntu:16.04 
 RUN apt-get update
 RUN apt install -y ruby-full ruby-dev build-essential
-RUN gem install bundler
+RUN gem install bundler -v 1.17.2
 ENV APP_HOME /app
 
 RUN mkdir $APP_HOME 
