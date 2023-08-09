@@ -5,7 +5,7 @@ RUN mkdir $APP_HOME
 
 RUN apt-get update 
 RUN apt-get install -y ruby-full ruby-dev build-essential 
-RUN gem install bundler 
+RUN gem install bundler --version 1.17.3
 RUN rm -rf /var/lib/apt/lists/*
 
 
