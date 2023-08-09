@@ -94,3 +94,18 @@ Kubernetes. Запуск кластера и приложения.Модель �
 Развернул локальное окружение для работы с Kubernetes
 Развернул Kubernetes в Yandex Cloud
 Запустил reddit в Kubernetes
+
+====================================
+#kubernetes-3
+Настройка балансировщиков нагрузки в Kubernetes и SSLTerminating.
+=====================================
+
+Получил основы работы с элементами окружения k8s
+Ingress Controller
+Ingress
+Secret
+TLS
+LoadBalancer Service
+Network Policies
+PersistentVolumes
+PersistentVolumeClaims

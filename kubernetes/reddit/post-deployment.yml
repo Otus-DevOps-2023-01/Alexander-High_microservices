@@ -20,7 +20,7 @@ spec:
         component: post
     spec:
       containers:
-      - image: alexhigh/ui
+      - image: alexhigh/post
         name: post
         env:
           - name: POST_DATABASE_HOST
