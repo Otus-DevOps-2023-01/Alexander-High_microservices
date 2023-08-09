@@ -109,3 +109,12 @@ LoadBalancer Service
 Network Policies
 PersistentVolumes
 PersistentVolumeClaims
+
+====================================
+#kubernetes-4
+Создание Helm Chart’ов для компонент приложения, управление зависимостями Helm.
+=====================================
+
+Работа с Helm
+Развертывание Gitlab в Kubernetes
+Запуск CI/CD конвейера в Kubernetes
