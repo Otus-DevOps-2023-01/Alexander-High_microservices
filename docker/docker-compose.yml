@@ -1,4 +1,5 @@
 ---
+
 version: '3.3'
 services:
   post_db:
@@ -57,7 +58,7 @@ services:
 volumes:
   prometheus_data:
   post_db:
-
+  comment_db:
 networks:
   net_front:
     ipam:
