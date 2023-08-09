@@ -6,26 +6,26 @@ services:
     volumes:
       - post_db:/data/db
     networks:
-      - net_back
+      - ${NET_BACK}
   ui:
     build: ./ui
     image: ${USERNAME}/ui:${UI_VERSION}
     ports:
-      - ${UI_PORT}:9292/tcp
+      - 9292:9292/tcp
     networks:
-      - net_front
+      - ${NET_FRONT}
   post:
     build: ./post-py
     image: ${USERNAME}/post:${POST_VERSION}
     networks:
-      - net_front
-      - net_back
+      - ${NET_FRONT}
+      - ${NET_BACK}
   comment:
     build: ./comment
     image: ${USERNAME}/comment:${COMMENT_VERSION}
     networks:
-      - net_front
-      - net_back
+      - ${NET_FRONT}
+      - ${NET_BACK}
   prometheus:
     image: ${USERNAME}/prometheus
     ports:
@@ -37,9 +37,9 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention=1d' # Задаем время хранения метрик в 1 день
     networks:
-      - net_front
-      - net_back
-      - net_bridge
+      - ${NET_FRONT}
+      - ${NET_BACK}
+      - ${NET_BRIDGE}
   node-exporter:
     image: prom/node-exporter:v0.15.2
     user: root
@@ -52,23 +52,13 @@ services:
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
     networks:
-      - net_front
-      - net_back
-      - net_bridge
+      - ${NET_FRONT}
+      - ${NET_BACK}
+      - ${NET_BRIDGE}
 volumes:
   prometheus_data:
   post_db:
 networks:
   net_front:
-    ipam:
-      driver: ${NET_DRIVER}
-      config:
-        - subnet: ${NET_FRONT}
   net_back:
-    ipam:
-      driver: ${NET_DRIVER}
-      config:
-        - subnet: ${NET_BACK}
   net_bridge:
-    ipam:
-      driver: ${NET_DRIVER}
