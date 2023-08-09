@@ -56,7 +56,6 @@ services:
 volumes:
   prometheus_data:
   post_db:
-  comment_db:
 networks:
   net_front:
     ipam:
