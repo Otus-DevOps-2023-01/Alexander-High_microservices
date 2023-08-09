@@ -1,10 +1,11 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
-RUN apt-get update \
-RUN apt-get install -y ruby-full ruby-dev build-essential \
-RUN gem install bundler --no-ri --no-rdoc \
+
+RUN apt-get update 
+RUN apt-get install -y ruby-full ruby-dev build-essential 
+RUN gem install bundler 
 RUN rm -rf /var/lib/apt/lists/*
 
 
