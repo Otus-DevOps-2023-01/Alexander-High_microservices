@@ -7,9 +7,6 @@ services:
       - post_db:/data/db
     networks:
       - ${NET_BACK}
-        aliases:
-          - post_db
-          - comment_db
   ui:
     container_name: ui
     image: ${USERNAME}/ui:${UI_VERSION}
