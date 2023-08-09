@@ -1,5 +1,4 @@
 ---
-
 version: '3.3'
 services:
   post_db:
@@ -33,7 +32,6 @@ services:
       - '9090:9090'
     volumes:
       - prometheus_data:/prometheus
-
     command: # Передаем доп параметры в командной строке
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
