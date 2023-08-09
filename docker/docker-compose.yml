@@ -1,4 +1,3 @@
-
 ---
 version: '3.3'
 services:
@@ -10,25 +9,25 @@ services:
       - net_back
   ui:
     build: ./ui
-    image: ${USERNAME}-ui
+    image: ${USERNAME}/ui:${UI_VERSION}
     ports:
       - ${UI_PORT}:9292/tcp
     networks:
       - net_front
   post:
     build: ./post-py
-    image: ${USERNAME}-post
+    image: ${USERNAME}/post:${POST_VERSION}
     networks:
       - net_front
       - net_back
   comment:
     build: ./comment
-    image: ${USERNAME}-comment
+    image: ${USERNAME}/comment:${COMMENT_VERSION}
     networks:
       - net_front
       - net_back
   prometheus:
-    image: ${USERNAME}-prometheus
+    image: ${USERNAME}/prometheus
     ports:
       - '9090:9090'
     volumes:
@@ -40,6 +39,7 @@ services:
     networks:
       - net_front
       - net_back
+      - net_bridge
   node-exporter:
     image: prom/node-exporter:v0.15.2
     user: root
@@ -54,6 +54,7 @@ services:
     networks:
       - net_front
       - net_back
+      - net_bridge
 volumes:
   prometheus_data:
   post_db:
@@ -68,4 +69,6 @@ networks:
       driver: ${NET_DRIVER}
       config:
         - subnet: ${NET_BACK}
-
+  net_bridge:
+    ipam:
+      driver: ${NET_DRIVER}
