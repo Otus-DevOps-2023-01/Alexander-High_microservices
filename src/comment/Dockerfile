@@ -1,14 +1,14 @@
 FROM ruby:2.4
-RUN apt update -q && apt install -y build-essential
+RUN apt-get update -qq && apt install -y build-essential
 
 ENV APP_HOME /app
 
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-ADD Gemfile* $APP_HOME/
+COPY Gemfile* /app/
 RUN bundle install
-COPY . $APP_HOME
+COPY . /app
 
 ENV COMMENT_DATABASE_HOST comment_db
 ENV COMMENT_DATABASE comments
