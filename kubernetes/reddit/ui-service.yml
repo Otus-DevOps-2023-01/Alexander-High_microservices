@@ -8,10 +8,10 @@ metadata:
     component: ui
 spec:
   type: NodePort
-  ports:  
+  ports:
   - port: 9292
-      protocol: TCP
-      targetPort: 9292
-    selector:
-      app: reddit
-      component: ui
+    protocol: TCP
+    targetPort: 9292
+  selector:
+    app: reddit
+    component: ui
