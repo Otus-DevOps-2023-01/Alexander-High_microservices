@@ -1,11 +1,11 @@
-FROM ubuntu:20.04
+FROM ubuntu:16.04 
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
 
 RUN apt-get update 
 RUN apt-get install -y ruby-full ruby-dev build-essential 
-RUN gem install bundler --version 1.17.3
+RUN gem install bundler -v 1.17.2
 
 WORKDIR $APP_HOME
 COPY Gemfile* /app/

@@ -76,3 +76,36 @@ https://hub.docker.com/repository/docker/alexhigh/alexhigh-microservice/tags?pag
 Пересобраны контейнеры
 Сбор структурированных и неструктурированных логов
 Распределенный трейсинг
+
+====================================
+#kubernetes-1
+Введение в kubernetes
+=====================================
+
+подготовлены Deployment-манифесты для reddit-приложения
+развернут k8s-кластер на двух нодах при помощи kubeadm
+применены манифесты reddit-приложения в созданном кластере
+
+====================================
+#kubernetes-2
+Kubernetes. Запуск кластера и приложения.Модель безопасности
+=====================================
+
+Развернул локальное окружение для работы с Kubernetes
+Развернул Kubernetes в Yandex Cloud
+Запустил reddit в Kubernetes
+
+====================================
+#kubernetes-3
+Настройка балансировщиков нагрузки в Kubernetes и SSLTerminating.
+=====================================
+
+Получил основы работы с элементами окружения k8s
+Ingress Controller
+Ingress
+Secret
+TLS
+LoadBalancer Service
+Network Policies
+PersistentVolumes
+PersistentVolumeClaims

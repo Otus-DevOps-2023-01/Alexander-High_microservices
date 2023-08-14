@@ -8,8 +8,9 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 COPY Gemfile* $APP_HOME/
+
 RUN bundle install
-COPY . $APP_HOME
+COPY . /app
 
 ENV COMMENT_DATABASE_HOST comment_db
 ENV COMMENT_DATABASE comments
