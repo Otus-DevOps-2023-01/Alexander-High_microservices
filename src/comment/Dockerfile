@@ -7,7 +7,8 @@ ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-COPY Gemfile* /app/
+COPY Gemfile* $APP_HOME/
+
 RUN bundle install
 COPY . /app
 

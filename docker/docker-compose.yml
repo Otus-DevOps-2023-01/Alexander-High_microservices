@@ -10,9 +10,7 @@ services:
         aliases:
           - post_db
           - comment_db
-    environment:
-      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
-
+    env_file: .env
   ui:
     container_name: ui
     image: ${USERNAME}/ui:${UI_VERSION}
@@ -25,9 +23,13 @@ services:
       options:
         fluentd-address: localhost:24224
         tag: service.ui
+    env_file: .env
     environment:
       - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
-
+      - POST_SERVICE_HOST=post
+      - POST_SERVICE_PORT=5000
+      - COMMENT_SERVICE_HOST=comment
+      - COMMENT_SERVICE_PORT=9292
   post:
     image: ${USERNAME}/post:${POST_VERSION}
     networks:
@@ -39,8 +41,12 @@ services:
         fluentd-address: localhost:24224
         tag: service.post
     environment:
+      - POST_DATABASE_HOST=post_db
+      - POST_DATABASE=post
       - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
-
+    depends_on:
+      - post_db
+    env_file: .env      
   comment:
     image: ${USERNAME}/comment:${COMMENT_VERSION}
     networks:
@@ -48,40 +54,38 @@ services:
       - front_net
     environment:
       - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
-
-  # prometheus:
-  #   image: ${USERNAME}/prometheus
-  #   networks:
-  #     - back_net
-  #     - front_net
-  #   ports:
-  #     - '9090:9090'
-  #   volumes:
-  #     - prometheus_data:/prometheus
-  #   command: # Передаем доп параметры в командной строке
-  #     - '--config.file=/etc/prometheus/prometheus.yml'
-  #     - '--storage.tsdb.path=/prometheus'
-  #     - '--storage.tsdb.retention=1d' # Задаем время хранения метрик в 1 день
-  #
-  # node-exporter:
-  #   image: prom/node-exporter:v0.15.2
-  #   networks:
-  #     - back_net
-  #     - front_net
-  #   user: root
-  #   volumes:
-  #     - /proc:/host/proc:ro
-  #     - /sys:/host/sys:ro
-  #     - /:/rootfs:ro
-  #   command:
-  #     - '--path.procfs=/host/proc'
-  #     - '--path.sysfs=/host/sys'
-  #     - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
-
+      - COMMENT_DATABASE_HOST=comment_db
+    env_file: .env
+  prometheus:
+    image: ${USERNAME}/prometheus
+    networks:
+      - back_net
+      - front_net
+    ports:
+      - '9090:9090'
+    volumes:
+      - prometheus_data:/prometheus
+    command: # Передаем доп параметры в командной строке
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention=1d' # Задаем время хранения метрик в 1 день
+  node-exporter:
+    image: prom/node-exporter:v0.15.2
+    networks:
+      - back_net
+      - front_net
+    user: root
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
 volumes:
   post_db:
   prometheus_data:
-
 networks:
   back_net:
   front_net:
