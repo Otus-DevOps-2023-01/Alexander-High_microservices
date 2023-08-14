@@ -42,3 +42,25 @@ services:
 Добавляем динамическин окружения
 Проводим тесты согласно ДЗ
 Проверяем работу
+
+====================================
+#monitoring-1 
+Введение в мониторинг. Системы мониторинга. 
+=====================================
+Изучил работу с Prometheus
+Собрал докер образы для приложений
+Запушил образы на DockerHub
+
+docker image ls                                                            
+REPOSITORY            TAG       IMAGE ID       CREATED          SIZE
+alexhigh-comment      latest    2e9e61344d01   25 minutes ago   900MB
+alexhigh-post         latest    3a0bd01089d7   27 minutes ago   924MB
+alexhigh-ui           latest    0b43abc2f85f   29 minutes ago   481MB
+alexhigh-prometheus   latest    047145a96c35   5 years ago      112MB
+
+Очень неприятно удилен сильно тличающимся синтаксисом
+ docker tag 2e9e61344d01 alexhigh/alexhigh-microservice:alexhigh-comment
+ docker push alexhigh/alexhigh-microservice:alexhigh-comment
+
+Ссылка на репозиторий: 
+https://hub.docker.com/repository/docker/alexhigh/alexhigh-microservice/tags?page=1&ordering=last_updated
