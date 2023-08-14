@@ -1,0 +1,5 @@
+➜  ~ docker images
+REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
+alex_high/ubuntu-tmp-file   latest    ea7da4821447   17 seconds ago   63.2MB
+ubuntu                      18.04     f9a80a55f492   2 months ago     63.2MB
+hello-world                 latest    9c7a54a9a43c   3 months ago     13.3kB
